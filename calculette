@@ -1,0 +1,32 @@
+def calculette(expression):
+prio = {'+': 1, '-': 1, '*': 2, '/': 2}
+tokens = [ '+', '-', '*', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+i=0
+expression= 3+4*5-6
+resultat = 0
+
+
+while i < len(expression):
+    token = expression[i]
+    if token in prio and prio[token] == 2:
+        if token == '*':
+                resultat += expression(i-1)*expression(i+1) 
+        elif token == '/':
+                resultat += expression(i-1)/expression(i+1)
+        else: 
+            i+=1
+            continue
+        i+=1
+    else:i+=1
+i=0
+while i < len(expression):
+    token = expression[i]
+    if token in prio and prio[token] == 1:
+        if token == '+':
+                resultat = resultat + expression(i+1) 
+        elif token == '-':
+                resultat = resultat - expression(i+1)
+        i+=1
+    else:i+=1
+
+print(resultat)

@@ -1,0 +1,46 @@
+import unittest
+class Calculatrice:
+    def evaluate_expression(self, expression):
+       return eval(expression)
+
+class TestCalculatrice(unittest.TestCase):
+    def setUp(self):
+        self.calculator = Calculatrice()
+
+    def test_addition(self):
+        expression = "2 + 3"
+        result = self.calculator.evaluate_expression(expression)
+        self.assertEqual(result, 5)
+
+    def test_multiplication(self):
+        expression = "2 * 3"
+        result = self.calculator.evaluate_expression(expression)
+        self.assertEqual(result, 6)
+
+    def test_subtraction(self):
+        expression = "5 - 3"
+        result = self.calculator.evaluate_expression(expression)
+        self.assertEqual(result, 2)
+
+    def test_division(self):
+        expression = "10 / 2"
+        result = self.calculator.evaluate_expression(expression)
+        self.assertEqual(result, 5)
+
+    def test_parentheses(self):
+        expression = "(2 + 3) * 4"
+        result = self.calculator.evaluate_expression(expression)
+        self.assertEqual(result, 20)
+
+    def test_priorities(self):
+        expression = "2 + 3 * 4 - 1"
+        result = self.calculator.evaluate_expression(expression)
+        self.assertEqual(result, 13)
+def test_invalid_expression(self):
+    expression = "2 + 1"
+    with self.assertRaises(ValueError):
+        self.calculator.evaluate_expression(expression)
+
+
+if __name__ == '__main__':
+    unittest.main()

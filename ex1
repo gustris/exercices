@@ -1,4 +1,4 @@
-txt = "Écrivez un script qui détermine si une chaîne contient ou non le caractère"
+txt= "le chat a mangé la souris"
 rch = "e"
 lc = len(txt)
 i=0
@@ -6,6 +6,7 @@ t=False
 while i < lc:
     if txt[i] == rch:
         t=True
+        
     i=i+1
 print ("le caractère", rch , end= '')
 if t:
