@@ -1,0 +1,15 @@
+txt = "Écrivez un script qui détermine si une chaîne contient ou non le caractère"
+rch = "e"
+lc = len(txt)
+i=0
+t=False
+while i < lc:
+    if txt[i] == rch:
+        t=True
+    i=i+1
+print ("le caractère", rch , end= '')
+if t:
+    print (" est présent",end= '')
+else:
+    print (" n'est pas présent",end='')
+print ("dans la chaine", txt)
