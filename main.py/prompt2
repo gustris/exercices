@@ -1,0 +1,40 @@
+Tu es un développeur senior de jeux 2D en Python souhaitant écrire un code accessible et 
+simple pour une personne pas très experimenté en python. 
+Tu écris un code clair, typé, très commenté, accessible à un élève de 3e. 
+Tu privilégies la simplicité, la stabilité et la clarté. 
+Produire un fichier unique `main.py` d’un jeu video fenetré de plateformes vertical à scrolling vers le haut 
+(scroll indépendant du joueur), conforme aux règles et critères d’acceptation ci-dessous. 
+Le jeu doit fonctionner sous Windows/macOS/Linux. DESIGN & ARCHI (dans un seul fichier) - 
+Classes: Game, Player, Platform, Level, HUD , enum PlatformType {NORMAL, TRAP, TRAMPOLINE}. 
+- Constantes explicites: GRAVITY, RUN_SPEED, JUMP_FORCE, SCROLL_SPEED=1, 
+TRAMPOLINE_MULTIPLIER=3.0, SCREEN_W/H, FONT_SIZE, COLORS. 
+- Type hints et docstrings sur les méthodes publiques. 
+- Boucle limitée à 60 FPS. GAMEPLAY & REGLES - 
+Joueur (petit monstre rose) soumis à la gravité, 
+déplacements gauche/droite, saut et. - Plateformes générées au lancement du jeu: NORMAL (support), TRAP (support), TRAMPOLINE (saut x1.5). 
+Scroll vertical constant: la caméra monte même si le joueur est immobile. 
+Caméra: si le joueur sort par le bas → -1 vie + respawn safe. - Vies: 3 vies au début de chaque niveau,
+0 vies → Game Over. - Niveaux: 3 niveaux, 
+en haut, un “soleil” à toucher, passage au niveau suivant et reset des vies à 3. 
+- Victoire: après le niveau 3, écran “Bravo” + affichage des temps par niveau.
+GENERATEUR DE NIVEAU - 
+- Plateformes spawn au lancement du jeu de façon aléatoire. Toujours maintenir un chemin praticable pour le joueur.
+- Répartition types: NORMAL 70%, TRAP 15%, TRAMPOLINE 15% (paramétrable).
+- Difficulté progressive (scroll plus rapide et/ou plus de pièges au niveau 3). 
+PHYSIQUE & COLLISIONS - Gravité sur vy, 
+- NORMAL: snap sur la surface et vy=0.
+- TRAP: -1 vie + respawn safe. 
+- TRAMPOLINE: impulsion JUMP_FORCE * TRAMPOLINE_MULTIPLIER. 
+- Clamp X dans l’écran, despawn des plateformes hors-écran bas. UI / HUD 
+- Afficher en haut-gauche: “Vies: n”, “Niveau: i/3”, “Temps: mm:ss.cc”. 
+- Placeholder sprite rose si l’asset n’est pas disponible. 
+CRITERES D’ACCEPTATION (tests manuels) 1) Lancement: `python main.py` sans erreur, 
+fenêtre 800x600 par défaut. Attendre que le joueur appuie sur la barre d’espace pour lancer le jeu.
+ Quand le jeu se lance, positionner le joueur sur une platteforme et ne rien faire tant qu'il n'a pas appuyé sur un touche
+2) Contrôles: ←/→ se déplacent, ↑ saute, trampoline = saut x1.5. 
+3) Scroll: la caméra monte en continu. 4) Collisions: normales/trampolines supportent, tu testera la collision avant avoir déplacé le joueur   
+pièges enlèvent disparaissent au bout de 0.5 seconde quand le joueur marche dessus, chute hors écran enlève 1 vie. 5) Passage de niveau en touchant le “soleil”,
+ vies réinitialisées à 3, le chrono de niveau est enregistré. 6) Après 3 niveaux: écran “Bravo” + temps par niveau, 
+ Game Over si vies==0. SORTIE ATTENDUE - Un seul bloc de code Python (contenu de main.py) avec:   
+ * Un en-tête commenté “Comment lancer / Règles, couleur des plateformes / Commandes”.   * Code entièrement typé et commenté.   
+ * Aucune dépendance autre que pygame. Maintenant, génère `main.py` intégral.
